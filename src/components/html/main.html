@@ -7,6 +7,33 @@
     <title>Main page to test</title>
 </head>
 <body>
-    
+    <input type="text" name="age" id="input" placeholder="Please enter name" onkeyup="handler(event)"/>
+    <div id="content"></div>
+    <script>
+        function handler(e) {
+            data.name = e.target.value;
+        }
+
+        var data = {
+            age: '20',
+            name: 'fang'
+        };
+        Object.keys(data).forEach(function(key) {
+            var value;
+            Object.defineProperty(data, key, {
+                enumerable: true,
+                configurable: true,
+                get: function() {
+                    return value;
+                },
+                set: function(val) {
+                    value = val;
+                    document.getElementById('input').value = val;
+                    document.getElementById('content').innerHTML = val;
+                }
+            })
+        })
+
+    </script>
 </body>
 </html>
